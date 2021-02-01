@@ -6,7 +6,7 @@ resource "aws_instance" "ubuntu" {
   vpc_security_group_ids = [aws_security_group.ubuntu_security_group.id]
   availability_zone      = "eu-central-1a"
   key_name               = var.key_name
-  user_data = templatefile("./scripts/start_apache.sh.tpl", {
+  user_data = templatefile("./scripts/scripts.sh.tpl", {
     db_host              = aws_db_instance.postgres.address
     db_port              = aws_db_instance.postgres.port
     db_name              = aws_db_instance.postgres.name
